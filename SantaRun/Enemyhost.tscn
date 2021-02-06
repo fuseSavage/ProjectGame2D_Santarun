@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Enemyhost.gd" type="Script" id=1]
+[ext_resource path="res://enemyG/GreenG/got hit/Zgreens1.png" type="Texture" id=2]
+[ext_resource path="res://enemyG/GreenG/got hit/Zgreens2.png" type="Texture" id=3]
+[ext_resource path="res://enemyG/GreenG/idle/Zgreen1.png" type="Texture" id=4]
+[ext_resource path="res://enemyG/GreenG/idle/Zgreen2.png" type="Texture" id=5]
+[ext_resource path="res://sound/015 snowball.wav" type="AudioStream" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 15.4662, 24.7949 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "dead",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "walk",
+"speed": 10.0
+} ]
+
+[node name="Enemyhost" type="KinematicBody2D"]
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -5, -6 )
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -5.87427, -6.23199 )
+scale = Vector2( 0.0522132, 0.0522132 )
+frames = SubResource( 2 )
+animation = "walk"
+frame = 1
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2( 10.0761, -5.09763 )
+enabled = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="sound_dead" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -1,0 +1,83 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://GUI.gd" type="Script" id=1]
+[ext_resource path="res://GUI/GUI.png" type="Texture" id=2]
+[ext_resource path="res://GUI/Asset 197@3x.png" type="Texture" id=3]
+[ext_resource path="res://GUI/Asset 195@3x.png" type="Texture" id=4]
+[ext_resource path="res://GUI/Asset 196@3x.png" type="Texture" id=5]
+[ext_resource path="res://GUI/Asset 368@3x.png" type="Texture" id=6]
+[ext_resource path="res://GUI/Asset 314@3x.png" type="Texture" id=7]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://fonts/Xolonium-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+font_data = SubResource( 1 )
+
+[node name="GUI" type="Node"]
+script = ExtResource( 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+margin_right = 1024.0
+margin_bottom = 700.0
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/CenterContainer"]
+margin_left = 212.0
+margin_right = 812.0
+margin_bottom = 700.0
+texture = ExtResource( 2 )
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/CenterContainer/TextureRect"]
+margin_left = 200.0
+margin_top = 230.0
+margin_right = 200.0
+margin_bottom = 40.0
+texture_normal = ExtResource( 3 )
+texture_hover = ExtResource( 4 )
+texture_focused = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="MarginContainer/CenterContainer/TextureRect/TextureButton"]
+margin_left = 3.17334
+margin_top = -20.6267
+margin_right = 186.173
+margin_bottom = 96.3733
+custom_fonts/font = SubResource( 2 )
+text = "
+START"
+align = 1
+
+[node name="TextureButton2" type="TextureButton" parent="MarginContainer/CenterContainer/TextureRect"]
+margin_left = 200.0
+margin_top = 350.0
+margin_right = 200.0
+margin_bottom = 40.0
+texture_normal = ExtResource( 5 )
+texture_hover = ExtResource( 4 )
+texture_focused = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="MarginContainer/CenterContainer/TextureRect/TextureButton2"]
+margin_left = 3.17334
+margin_top = -20.6267
+margin_right = 186.173
+margin_bottom = 96.3733
+custom_fonts/font = SubResource( 2 )
+text = "
+EXIT"
+align = 1
+
+[node name="TextureButton3" type="TextureButton" parent="MarginContainer/CenterContainer/TextureRect"]
+margin_left = 256.573
+margin_top = 466.773
+margin_right = 338.573
+margin_bottom = 552.773
+texture_normal = ExtResource( 6 )
+texture_hover = ExtResource( 7 )
+[connection signal="pressed" from="MarginContainer/CenterContainer/TextureRect/TextureButton" to="." method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="MarginContainer/CenterContainer/TextureRect/TextureButton2" to="." method="_on_TextureButton2_pressed"]
+[connection signal="pressed" from="MarginContainer/CenterContainer/TextureRect/TextureButton3" to="." method="_on_TextureButton3_pressed"]

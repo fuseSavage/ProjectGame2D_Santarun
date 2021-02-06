@@ -1,0 +1,47 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://collect.gd" type="Script" id=1]
+[ext_resource path="res://png/Gold/Gold_21.png" type="Texture" id=2]
+[ext_resource path="res://png/Gold/Gold_22.png" type="Texture" id=3]
+[ext_resource path="res://png/Gold/Gold_23.png" type="Texture" id=4]
+[ext_resource path="res://png/Gold/Gold_24.png" type="Texture" id=5]
+[ext_resource path="res://png/Gold/Gold_25.png" type="Texture" id=6]
+[ext_resource path="res://png/Gold/Gold_26.png" type="Texture" id=7]
+[ext_resource path="res://png/Gold/Gold_27.png" type="Texture" id=8]
+[ext_resource path="res://png/Gold/Gold_28.png" type="Texture" id=9]
+[ext_resource path="res://png/Gold/Gold_29.png" type="Texture" id=10]
+[ext_resource path="res://png/Gold/Gold_30.png" type="Texture" id=11]
+[ext_resource path="res://sound/coins.wav" type="AudioStream" id=12]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 245.853
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "gold",
+"speed": 5.0
+} ]
+
+[node name="collect" type="Area2D"]
+z_index = 5
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2( 0.05, 0.05 )
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.05, 0.05 )
+frames = SubResource( 2 )
+animation = "gold"
+frame = 9
+
+[node name="sound_coins" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 12 )
+stream_paused = true
+[connection signal="body_entered" from="." to="." method="_on_collect_body_entered"]

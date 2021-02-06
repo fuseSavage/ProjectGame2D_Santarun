@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/015 snowball.wav-ccbee27190b4a6d9ef64983b0dfbfce8.sample"
+
+[deps]
+
+source_file="res://sound/015 snowball.wav"
+dest_files=[ "res://.import/015 snowball.wav-ccbee27190b4a6d9ef64983b0dfbfce8.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
